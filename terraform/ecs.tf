@@ -1,43 +1,42 @@
-resource "aws_ecs_cluster" "app_cluster" {
-  name = "simple-time-service-cluster"
+resource "aws_ecs_cluster" "flask_cluster" {
+  name = "flask-cluster"
 }
 
-resource "aws_ecs_task_definition" "app_task" {
-  family                   = "simple-time-service-task"
-  network_mode             = "awsvpc"
+resource "aws_ecs_task_definition" "flask_task" {
+  family                   = "flask-task"
   requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
   cpu                      = "256"
   memory                   = "512"
-  execution_role_arn       = aws_iam_role.ecs_task_role.arn
+  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
+
   container_definitions = jsonencode([
     {
-      name  = "simple-time-service"
-      image = "your-dockerhub-username/simple-time-service:latest"
-      portMappings = [
-        {
-          containerPort = 5000
-          hostPort      = 5000
-        }
-      ]
+      name      = "flask-container"
+      image     = var.container_image
+      cpu       = 256
+      memory    = 512
+      essential = true
+      portMappings = [{ containerPort = 5000, hostPort = 5000 }]
     }
   ])
 }
 
-resource "aws_ecs_service" "app_service" {
-  name            = "simple-time-service"
-  cluster        = aws_ecs_cluster.app_cluster.id
-  task_definition = aws_ecs_task_definition.app_task.arn
-  launch_type     = "FARGATE"
+resource "aws_ecs_service" "flask_service" {
+  name            = "flask-service"
+  cluster         = aws_ecs_cluster.flask_cluster.id
+  task_definition = aws_ecs_task_definition.flask_task.arn
   desired_count   = 1
+  launch_type     = "FARGATE"
 
   network_configuration {
-    subnets         = aws_subnet.private_subnets[*].id
-    security_groups = [aws_security_group.ecs_sg.id]
+    subnets         = module.network.private_subnets
+    security_groups = [aws_security_group.ecs_tasks.id]
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.ecs_tg.arn
-    container_name   = "simple-time-service"
+    target_group_arn = aws_lb_target_group.flask_tg.arn
+    container_name   = "flask-container"
     container_port   = 5000
   }
 }

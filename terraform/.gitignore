@@ -1,0 +1,36 @@
+# Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform plan files
+*.tfplan
+
+# Terraform lock files
+.terraform/
+.terraform.lock.hcl
+
+# Terraform variable files (sensitive information)
+*.tfvars
+*.tfvars.json
+!terraform.tfvars.example  # Allow an example file for reference
+
+# Crash logs and debug output
+crash.log
+*.log
+
+# Ignore local execution files
+*.out
+*.backup
+
+# AWS credentials & sensitive files
+.aws/
+*.pem
+*.key
+*.crt
+
+# Editor & System Files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db

@@ -41,9 +41,5 @@ SimpleTimeService is a lightweight microservice that provides the current timest
    curl http://localhost:5000/
    ```
 
-## Deployment
-- The Docker image should be pushed to a public registry such as DockerHub.
-- Ensure proper security measures (e.g., environment variables for configurations).
-
 ## License
 This project is open-source and available under the MIT License.
