@@ -1,0 +1,60 @@
+# Byte-compiled / optimized / compiled Python files
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
+
+# Virtual Environment (venv)
+venv/
+env/
+ENV/
+.venv/
+*.egg-info/
+
+# Logs & Database
+*.log
+instance/
+*.sqlite
+*.db
+
+# Flask-Specific
+config.py
+.env
+.envrc
+
+# Pytest & Coverage Reports
+.coverage
+htmlcov/
+*.cover
+.cache/
+nosetests.xml
+pytest_cache/
+junit.xml
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+*.dockerfile
+
+# Terraform State Files
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+!terraform.tfvars.example
+
+# AWS Credentials & Keys
+.aws/
+*.pem
+*.crt
+*.key
+
+# VS Code & IDE Settings
+.vscode/
+.idea/
+*.iml
+
+# MacOS & Windows System Files
+.DS_Store
+Thumbs.db
