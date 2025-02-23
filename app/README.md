@@ -27,7 +27,7 @@ SimpleTimeService is a lightweight microservice that provides the current timest
    curl http://127.0.0.1:5000/
    ```
 
-### Running with Docker
+### Running with Docker Locally and push to Dockerhub
 1. Build the Docker image:
    ```sh
    docker build -t simple-time-service .
@@ -40,6 +40,11 @@ SimpleTimeService is a lightweight microservice that provides the current timest
    ```sh
    curl http://localhost:5000/
    ```
+4. Push to Dockerhub (Need to be logged in to Dockerhub):
+   ```sh
+   docker tag <dockerhub acc>/<repo name> simple-time-service
+   docker push <dockerhub acc>/<repo name>
+   ```
 
-## License
-This project is open-source and available under the MIT License.
+### ⚡ Dockerhub details
+- **Dockerhub public repo details** – nmadanshah114/devops
