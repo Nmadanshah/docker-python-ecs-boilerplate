@@ -45,6 +45,3 @@ SimpleTimeService is a lightweight microservice that provides the current timest
    docker tag <dockerhub acc>/<repo name> simple-time-service
    docker push <dockerhub acc>/<repo name>
    ```
-
-### ⚡ Dockerhub details
-- **Dockerhub public repo details** – nmadanshah114/devops
