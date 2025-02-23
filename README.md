@@ -28,8 +28,9 @@ This repository contains a **Flask application** containerized using **Docker** 
 │   ├── alb.tf                # Application Load Balancer (ALB)
 │   ├── ecs.tf                # ECS Cluster, Task Definitions, Services
 │   ├── iam.tf                # IAM roles and policies for ECS tasks
-│   ├── provider.tf           # AWS provider configuration
 │   ├── output.tf             # Terraform outputs (ALB DNS)
+│   ├── provider.tf           # AWS provider configuration
+│   ├── README.md             # Documentation for Terraform
 │   ├── variables.tf          # Input variables for Terraform
 │   ├── terraform.tfvars.example  # Example variable values
 │   ├── .gitignore            # Ignores Terraform state & sensitive files
