@@ -25,5 +25,4 @@ variable "private_subnets" {
 variable "container_image" {
   description = "Docker container image"
   type        = string
-  default     = "nmadanshah114/devops"
 }
